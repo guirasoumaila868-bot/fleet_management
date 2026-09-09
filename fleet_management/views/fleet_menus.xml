@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- App racine -->
+    <menu id="menu_smart_fleet_root" name="SMART Fleet" sequence="10" web_icon="smart_fleet,static/description/icon.png"/>
+
+    <!-- Véhicules -->
+    <menu id="menu_fleet_vehicles_root" name="Véhicules" parent="menu_smart_fleet_root" sequence="10"/>
+    <menu id="menu_fleet_dashboard" name="Tableau de Bord" parent="menu_fleet_vehicles_root" action="action_fleet_dashboard" sequence="1"/>
+    <menu id="menu_fleet_vehicle_all" name="Tous les véhicules" parent="menu_fleet_vehicles_root" action="action_fleet_vehicle" sequence="10"/>
+    <menu id="menu_fleet_vehicle_tracteur" name="Tracteurs" parent="menu_fleet_vehicles_root" action="action_fleet_vehicle_tracteur" sequence="20"/>
+    <menu id="menu_fleet_vehicle_porteur" name="Porteurs" parent="menu_fleet_vehicles_root" action="action_fleet_vehicle_porteur" sequence="30"/>
+    <menu id="menu_fleet_vehicle_remorque" name="Remorques" parent="menu_fleet_vehicles_root" action="action_fleet_vehicle_remorque" sequence="40"/>
+    <menu id="menu_fleet_cost_report" name="Coût de revient kilométrique" parent="menu_fleet_vehicles_root" action="action_fleet_cost_report" sequence="50"/>
+
+    <!-- Pannes et réparations -->
+    <menu id="menu_fleet_breakdown_root" name="Pannes et réparations" parent="menu_smart_fleet_root" action="action_fleet_breakdown" sequence="20"/>
+
+    <!-- Entretien préventif -->
+    <menu id="menu_fleet_maintenance_root" name="Entretien préventif" parent="menu_smart_fleet_root" action="action_fleet_maintenance" sequence="30"/>
+
+    <!-- Pièces et stock -->
+    <menu id="menu_fleet_part_root" name="Pièces et stock" parent="menu_smart_fleet_root" action="action_fleet_part" sequence="40"/>
+
+    <!-- Documents -->
+    <menu id="menu_fleet_document_root" name="Documents" parent="menu_smart_fleet_root" action="action_fleet_document_all" sequence="50"/>
+
+    <!-- Chauffeurs -->
+    <menu id="menu_fleet_driver_root" name="Chauffeurs" parent="menu_smart_fleet_root" action="action_fleet_driver" sequence="60"/>
+
+    <!-- Missions -->
+    <menu id="menu_fleet_mission_root" name="Missions" parent="menu_smart_fleet_root" action="action_fleet_mission" sequence="70"/>
+
+    <!-- Facturation et clients -->
+    <menu id="menu_fleet_invoice_root" name="Facturation et clients" parent="menu_smart_fleet_root" action="action_fleet_invoice" sequence="80"/>
+
+    <!-- Carburant -->
+    <menu id="menu_fleet_fuel_root" name="Carburant" parent="menu_smart_fleet_root" action="action_fleet_fuel_log" sequence="90"/>
+
+    <!-- Géolocalisation -->
+    <menu id="menu_fleet_gps_root" name="Géolocalisation" parent="menu_smart_fleet_root" action="action_fleet_gps_position" sequence="100"/>
+
+    <!-- Reporting -->
+    <menu id="menu_fleet_reporting_root" name="Reporting" parent="menu_smart_fleet_root" action="action_fleet_cost_report" sequence="110"/>
+
+    <!-- Administration : réutilise la gestion des utilisateurs Odoo -->
+    <menu id="menu_fleet_admin_root" name="Administration" parent="menu_smart_fleet_root" action="base.action_res_users" sequence="120" groups="base.group_system"/>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fleet_coupling_tree" model="ir.ui.view">
+        <field name="name">smart.fleet.coupling.tree</field>
+        <field name="model">smart.fleet.coupling</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="remorque_id"/>
+                <field name="date_debut"/>
+                <field name="date_fin"/>
+                <field name="motif_detelage"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

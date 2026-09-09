@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Pièces et stock -->
+    <record id="view_fleet_part_tree" model="ir.ui.view">
+        <field name="name">smart.fleet.part.tree</field>
+        <field name="model">smart.fleet.part</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" decoration-danger="quantite &lt;= seuil_alerte">
+                <field name="name"/>
+                <field name="reference"/>
+                <field name="quantite"/>
+                <field name="seuil_alerte"/>
+                <field name="prix_unitaire"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_fleet_part" model="ir.actions.act_window">
+        <field name="name">Pièces et stock</field>
+        <field name="res_model">smart.fleet.part</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Facturation et clients -->
+    <record id="view_fleet_invoice_tree" model="ir.ui.view">
+        <field name="name">smart.fleet.invoice.tree</field>
+        <field name="model">smart.fleet.invoice</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="client_id"/>
+                <field name="date"/>
+                <field name="montant" sum="Total"/>
+                <field name="state" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_fleet_invoice" model="ir.actions.act_window">
+        <field name="name">Facturation et clients</field>
+        <field name="res_model">smart.fleet.invoice</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Carburant -->
+    <record id="view_fleet_fuel_log_tree" model="ir.ui.view">
+        <field name="name">smart.fleet.fuel.log.tree</field>
+        <field name="model">smart.fleet.fuel.log</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="vehicle_id"/>
+                <field name="date"/>
+                <field name="litres" sum="Total litres"/>
+                <field name="prix_litre"/>
+                <field name="montant_total" sum="Total"/>
+                <field name="kilometrage"/>
+                <field name="station"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_fleet_fuel_log" model="ir.actions.act_window">
+        <field name="name">Carburant</field>
+        <field name="res_model">smart.fleet.fuel.log</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Géolocalisation -->
+    <record id="view_fleet_gps_position_tree" model="ir.ui.view">
+        <field name="name">smart.fleet.gps.position.tree</field>
+        <field name="model">smart.fleet.gps.position</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="vehicle_id"/>
+                <field name="date"/>
+                <field name="latitude"/>
+                <field name="longitude"/>
+                <field name="vitesse_kmh"/>
+                <field name="adresse"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_fleet_gps_position" model="ir.actions.act_window">
+        <field name="name">Géolocalisation</field>
+        <field name="res_model">smart.fleet.gps.position</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

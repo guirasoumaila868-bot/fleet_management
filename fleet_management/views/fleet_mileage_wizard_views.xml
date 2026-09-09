@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fleet_mileage_replace_wizard_form" model="ir.ui.view">
+        <field name="name">smart.fleet.mileage.replace.wizard.form</field>
+        <field name="model">smart.fleet.mileage.replace.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Remplacement du compteur kilométrique">
+                <p>Êtes-vous sûr de vouloir effectuer cette action ?</p>
+                <group>
+                    <field name="vehicle_id" invisible="1"/>
+                    <field name="dernier_releve"/>
+                    <field name="nouveau_releve"/>
+                    <field name="motif" placeholder="Saisissez le motif..."/>
+                </group>
+                <p class="text-muted">Cette action sera tracée au journal d'audit.</p>
+                <field name="confirme_verification"/>
+                <label for="confirme_verification">Je confirme avoir vérifié les informations</label>
+                <footer>
+                    <button string="Confirmer" type="object" name="action_confirmer" class="btn-primary"/>
+                    <button string="Annuler" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

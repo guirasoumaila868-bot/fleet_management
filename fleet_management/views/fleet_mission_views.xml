@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fleet_mission_tree" model="ir.ui.view">
+        <field name="name">smart.fleet.mission.tree</field>
+        <field name="model">smart.fleet.mission</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="vehicle_id"/>
+                <field name="chauffeur_id"/>
+                <field name="origine"/>
+                <field name="destination"/>
+                <field name="date_depart"/>
+                <field name="state" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_fleet_mission_form" model="ir.ui.view">
+        <field name="name">smart.fleet.mission.form</field>
+        <field name="model">smart.fleet.mission</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name"/></h1></div>
+                    <group>
+                        <group>
+                            <field name="vehicle_id"/>
+                            <field name="chauffeur_id"/>
+                            <field name="client_id"/>
+                        </group>
+                        <group>
+                            <field name="origine"/>
+                            <field name="destination"/>
+                            <field name="distance_km"/>
+                            <field name="date_depart"/>
+                            <field name="date_arrivee_prevue"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_fleet_mission_search" model="ir.ui.view">
+        <field name="name">smart.fleet.mission.search</field>
+        <field name="model">smart.fleet.mission</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="vehicle_id"/>
+                <field name="name"/>
+                <filter string="En cours" name="filter_en_cours" domain="[('state','=','en_cours')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_fleet_mission" model="ir.actions.act_window">
+        <field name="name">Missions</field>
+        <field name="res_model">smart.fleet.mission</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_fleet_mission_search"/>
+    </record>
+</odoo>

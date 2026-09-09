@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fleet_driver_tree" model="ir.ui.view">
+        <field name="name">smart.fleet.driver.tree</field>
+        <field name="model">smart.fleet.driver</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="telephone"/>
+                <field name="numero_permis"/>
+                <field name="permis_expiration"/>
+                <field name="statut" widget="badge" decoration-success="statut == 'disponible'" decoration-info="statut == 'en_mission'"/>
+                <field name="vehicle_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_fleet_driver_form" model="ir.ui.view">
+        <field name="name">smart.fleet.driver.form</field>
+        <field name="model">smart.fleet.driver</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Inactif" bg_color="text-bg-danger" invisible="statut != 'inactif'"/>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Nom complet"/></h1>
+                    </div>
+                    <group>
+                        <group string="Contact">
+                            <field name="telephone"/>
+                            <field name="email"/>
+                        </group>
+                        <group string="Permis de conduire">
+                            <field name="numero_permis"/>
+                            <field name="categorie_permis"/>
+                            <field name="permis_expiration"/>
+                            <field name="statut"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Véhicules attribués">
+                            <field name="vehicle_ids">
+                                <tree>
+                                    <field name="immatriculation"/>
+                                    <field name="marque_modele"/>
+                                    <field name="categorie"/>
+                                    <field name="etat_service" widget="badge"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_fleet_driver" model="ir.actions.act_window">
+        <field name="name">Chauffeurs</field>
+        <field name="res_model">smart.fleet.driver</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

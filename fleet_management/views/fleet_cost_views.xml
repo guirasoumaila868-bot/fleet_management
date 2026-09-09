@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fleet_cost_tree" model="ir.ui.view">
+        <field name="name">smart.fleet.cost.tree</field>
+        <field name="model">smart.fleet.cost</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="vehicle_id" column_invisible="context.get('default_vehicle_id')"/>
+                <field name="date"/>
+                <field name="poste"/>
+                <field name="montant" sum="Total"/>
+                <field name="distance_km" sum="Distance"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_fleet_cost_pivot" model="ir.ui.view">
+        <field name="name">smart.fleet.cost.pivot</field>
+        <field name="model">smart.fleet.cost</field>
+        <field name="arch" type="xml">
+            <pivot string="Coût de revient kilométrique">
+                <field name="vehicle_id" type="row"/>
+                <field name="poste" type="col"/>
+                <field name="montant" type="measure"/>
+                <field name="distance_km" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_fleet_cost_graph" model="ir.ui.view">
+        <field name="name">smart.fleet.cost.graph</field>
+        <field name="model">smart.fleet.cost</field>
+        <field name="arch" type="xml">
+            <graph string="Répartition par poste de dépense" type="bar">
+                <field name="poste"/>
+                <field name="montant" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_fleet_cost_report" model="ir.actions.act_window">
+        <field name="name">Coût de revient kilométrique</field>
+        <field name="res_model">smart.fleet.cost</field>
+        <field name="view_mode">pivot,graph,tree</field>
+    </record>
+</odoo>
